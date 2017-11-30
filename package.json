@@ -11,6 +11,9 @@
   "scripts": {
     "test": "standard && tape test.js"
   },
+  "bin": {
+    "dotlocal": "./bin.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mafintosh/dotlocal.git"
