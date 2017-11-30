@@ -1,0 +1,24 @@
+{
+  "name": "dotlocal",
+  "version": "0.0.0",
+  "description": "Easily announce and discover .local domains over mdns",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/dotlocal.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/dotlocal/issues"
+  },
+  "homepage": "https://github.com/mafintosh/dotlocal"
+}
