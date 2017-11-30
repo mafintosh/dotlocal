@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Easily announce and discover .local domains over mdns",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "multicast-dns": "^6.2.1"
+  },
   "devDependencies": {
     "standard": "^10.0.3",
     "tape": "^4.8.0"
