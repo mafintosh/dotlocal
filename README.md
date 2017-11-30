@@ -36,7 +36,7 @@ Announce your local ip on the specified domain.
 
 Call `announce.destroy` to stop announcing.
 
-#### `var query = dotlocal.lookup(domain, [options], [callback])
+#### `var query = dotlocal.lookup(domain, [options], [callback])`
 
 Do a lookup for the domain. If you specify a callback it will call that when it finds any ip resolving that domain or a timeout occurs.
 
