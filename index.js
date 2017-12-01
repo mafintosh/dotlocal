@@ -2,6 +2,9 @@ var mdns = require('multicast-dns')
 var events = require('events')
 var os = require('os')
 
+var ipv4Regex = /^(\d{1,3}\.){3,3}\d{1,3}$/
+var ipv6Regex = /^(::)?(((\d{1,3}\.){3}(\d{1,3}){1})?([0-9a-f]){0,4}:{0,2}){1,8}(::)?$/i
+
 module.exports = function (opts) {
   var dns = mdns(opts)
   var self = {}
@@ -94,7 +97,7 @@ module.exports = function (opts) {
     }
   }
 
-  self.announce = function (name) {
+  self.announce = function (name, ip) {
     var ann = new events.EventEmitter()
 
     ann.types = ['A', 'AAAA']
@@ -117,6 +120,13 @@ module.exports = function (opts) {
     return ann
 
     function answers () {
+      if (ipv4Regex.test(ip)) {
+        return [{type: 'A', ttl: ttl, name: name, data: ip}]
+      }
+      if (ipv6Regex.test(ip)) {
+        return [{type: 'AAAA', ttl: ttl, name: name, data: ip}]
+      }
+
       var ans = []
       var networks = os.networkInterfaces()
 
