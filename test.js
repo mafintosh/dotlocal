@@ -3,7 +3,7 @@ var tape = require('tape')
 
 tape('announce and lookup', function (t) {
   var dns = dotlocal()
-  var name = Math.random().toString(16).slice(2) + '.local'
+  var name = randomDomain()
 
   var ann = dns.announce(name)
   var hadQuestion = false
@@ -23,3 +23,22 @@ tape('announce and lookup', function (t) {
     })
   })
 })
+
+tape('announce custom address', function (t) {
+  var dns = dotlocal()
+  var name = randomDomain()
+  var addr = '192.168.0.7'
+
+  dns.announce(name, addr)
+
+  dns.lookup(name, function (err, ip) {
+    dns.destroy()
+    t.error(err, 'no error')
+    t.equal(ip, addr, 'right address')
+    t.end()
+  })
+})
+
+function randomDomain () {
+  return Math.random().toString(16).slice(2) + '.local'
+}
